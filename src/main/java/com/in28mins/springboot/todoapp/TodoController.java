@@ -31,15 +31,17 @@ public class TodoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "add-todo")
-	public String addTodoPage() {
-
+	public String addTodoPage(ModelMap model) {
+		String user = (String) model.get("user");
+		Todo todo = new Todo(0, user, "", LocalDate.now().plusYears(1l), false);
+		model.addAttribute("todo", todo);
 		return "add-todo";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "add-todo")
-	public String listTodosPage(@RequestParam String description, ModelMap model) {
+	public String listTodosPage(ModelMap model, Todo todo) {
 		String user = (String) model.get("user");
-		todoService.addTodo(user, description, LocalDate.now().plusYears(1l), false);
+		todoService.addTodo(user, todo.getDescription(), LocalDate.now().plusYears(1l), false);
 		return "redirect:list-todos";
 	}
 	

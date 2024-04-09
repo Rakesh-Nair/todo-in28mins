@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <!DOCTYPE html>
 <head>
 <link rel="stylesheet"
@@ -9,11 +12,29 @@
 	<div class="container border">
 		<h2>Add Todo</h2>
 
-		<form method="post">
+		<form:form method="post" modelAttribute="todo">
 			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label">Enter Description</label>
+				<label for="name" class="col-sm-2 col-form-label">Enter
+					Description</label>
 				<div class="col-sm-4 col-form-label">
-					<input class="form-control" type="text" name="description" />
+					<form:input class="form-control" type="text" path="description"
+						required="required" />
+				</div>
+
+			</div>
+
+			<div class="form-group row">
+				<label for="name" class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-4 col-form-label">
+					<form:input class="form-control" type="hidden" path="id" />
+				</div>
+
+			</div>
+
+			<div class="form-group row">
+				<label for="name" class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-4 col-form-label">
+					<form:input class="form-control" type="hidden" path="done"/>
 				</div>
 
 			</div>
@@ -21,7 +42,7 @@
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</div>
 
-		</form>
+		</form:form>
 
 	</div>
 
