@@ -55,7 +55,4 @@ public class Todo {
 		this.targetDate = targetDate;
 		this.done = done;
 	}
-	
-	
-
 }
