@@ -28,5 +28,17 @@ public class TodoController {
 		this.todoService = todoService;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "add-todo")
+	public String addTodoPage() {
+
+		return "add-todo";
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "add-todo")
+	public String listTodosPage(ModelMap model) {
+		List<Todo> todos = todoService.findByUsername("Rakesh");
+		model.put("todos", todos);
+		return "list-todos";
+	}
 	
 }

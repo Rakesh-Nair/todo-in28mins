@@ -1,13 +1,14 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <head>
-	<link rel="stylesheet" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 <title>Welcome Page</title>
 </head>
 <body>
-	<div> Welcome to Todos Application ${name}!! </div>
-	<h2>Your Todos are :-</h2>
-		<table>
+	<div class="container">
+		<h2>Your Todos</h2>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -27,7 +28,10 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<script src="webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-		<script src="webjars/jquery/3.6.3/jquery.min.js"></script>
-	</body>
+		<a href="add-todo" class="btn btn-success">Add Todo</a>
+	</div>
+
+	<script src="webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+	<script src="webjars/jquery/3.6.3/jquery.min.js"></script>
+</body>
 </html>
