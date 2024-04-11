@@ -17,10 +17,12 @@
 				<label for="name" class="col-sm-2 col-form-label">Enter
 					Description</label>
 				<div class="col-sm-4 col-form-label">
-					<form:input class="form-control" type="text" path="description"
+					<form:input cssClass="form-control" type="text" path="description"
 						required="required" />
 				</div>
-
+				<div class="col-sm-4 col-form-label">
+					<form:errors type="text" cssClass="text-danger" path="description" />
+				</div>
 			</div>
 
 			<div class="form-group row">
@@ -34,12 +36,12 @@
 			<div class="form-group row">
 				<label for="name" class="col-sm-2 col-form-label"></label>
 				<div class="col-sm-4 col-form-label">
-					<form:input class="form-control" type="hidden" path="done"/>
+					<form:input class="form-control" type="hidden" path="done" />
 				</div>
 
 			</div>
 			<div class="form-group row col-sm-2">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Add</button>
 			</div>
 
 		</form:form>
