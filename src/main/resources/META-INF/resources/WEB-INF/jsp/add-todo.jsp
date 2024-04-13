@@ -9,41 +9,31 @@
 <title>Welcome Page</title>
 </head>
 <body>
-	<div class="container border">
-		<h2>Add Todo</h2>
+	<div class="container mt-3 border">
+		<h2>Enter Todo Details</h2>
 
 		<form:form method="post" modelAttribute="todo">
-			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label">Enter
-					Description</label>
-				<div class="col-sm-4 col-form-label">
-					<form:input cssClass="form-control" type="text" path="description"
-						required="required" />
-				</div>
-				<div class="col-sm-4 col-form-label">
-					<form:errors type="text" cssClass="text-danger" path="description" />
-				</div>
-			</div>
+			<fieldset class="mb-3">
+				<form:label path="description">Description</form:label>
+				<form:input type="text" path="description" required="required" />
+				<form:errors cssClass="text-danger" path="description" />
+			</fieldset>
 
-			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label"></label>
-				<div class="col-sm-4 col-form-label">
-					<form:input class="form-control" type="hidden" path="id" />
-				</div>
+			<fieldset class="mb-3">
+				<form:label path="targetDate">Target Date</form:label>
+				<form:input type="text" path="targetDate" required="required" />
+				<form:errors cssClass="text-danger" path="targetDate" />
+			</fieldset>
 
-			</div>
+			<fieldset class="mb-3">
+				<form:input type="hidden" path="id" />
+			</fieldset>
 
-			<div class="form-group row">
-				<label for="name" class="col-sm-2 col-form-label"></label>
-				<div class="col-sm-4 col-form-label">
-					<form:input class="form-control" type="hidden" path="done" />
-				</div>
+			<fieldset class="mb-3">
+				<form:input type="hidden" path="done" />
+			</fieldset>
 
-			</div>
-			<div class="form-group row col-sm-2">
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</div>
-
+			<button type="submit" class="btn btn-success">Submit</button>
 		</form:form>
 
 	</div>
