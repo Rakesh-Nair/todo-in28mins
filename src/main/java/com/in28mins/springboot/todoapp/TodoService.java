@@ -14,7 +14,7 @@ public class TodoService {
 	static {
 		//int id, String description, String username, LocalDate targetDate, boolean done
 		todos = new ArrayList<>();
-		Todo todo = new Todo(++count, "Learn AWS", "Rakesh", LocalDate.now().plusDays(1), false);
+		Todo todo = new Todo(++count, "Learn AWS Certified", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
 		todo = new Todo(++count, "Learn GWT", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
@@ -53,7 +53,7 @@ public class TodoService {
 		Todo fetchedTodo = todos.stream().filter(t -> t.getId() == todo.getId()).findFirst().get();
 		fetchedTodo.setDescription(todo.getDescription());
 		fetchedTodo.setDone(todo.isDone());
-		fetchedTodo.setTargetDate(LocalDate.now().plusYears(1L));
+		fetchedTodo.setTargetDate(todo.getTargetDate());
 	}
 
 }

@@ -6,7 +6,9 @@
 <head>
 <link rel="stylesheet"
 	href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
-<title>Welcome Page</title>
+<link rel="stylesheet"
+	href="webjars/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.standalone.min.css">
+<title>Add Todo</title>
 </head>
 <body>
 	<div class="container mt-3 border">
@@ -35,10 +37,16 @@
 
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form:form>
-
 	</div>
 
 	<script src="webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
 	<script src="webjars/jquery/3.6.3/jquery.min.js"></script>
+	<script
+		src="webjars/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript">
+		$('#targetDate').datepicker({
+			format : 'yyyy-mm-dd'
+		});
+	</script>
 </body>
 </html>
