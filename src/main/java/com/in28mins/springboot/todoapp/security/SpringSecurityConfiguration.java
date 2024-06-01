@@ -19,8 +19,8 @@ public class SpringSecurityConfiguration {
 		Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
 		return new InMemoryUserDetailsManager(
 				User.builder().passwordEncoder(passwordEncoder )
-				.password("admin")
-				.username("admin")
+				.password("rakesh123")
+				.username("rakesh")
 				.roles("USER", "ADMIN")
 				.build());
 	}

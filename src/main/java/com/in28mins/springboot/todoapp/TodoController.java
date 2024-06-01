@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,7 +25,8 @@ public class TodoController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "list-todos")
 	public String listAllTodos(ModelMap model) {
-		List<Todo> todos = todoService.getAllTodos();
+		String user = getLoggedInUser(model);
+		List<Todo> todos = todoService.getAllTodos(user);
 		model.put("todos", todos);
 		return "list-todos";
 	}
@@ -35,7 +38,7 @@ public class TodoController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "add-todo")
 	public String addTodoPage(ModelMap model) {
-		String user = (String) model.get("user");
+		String user = getLoggedInUser(model);
 		Todo todo = new Todo(0, user, "", LocalDate.now(), false);
 		model.addAttribute("todo", todo);
 		return "add-todo";
@@ -46,7 +49,7 @@ public class TodoController {
 		if(result.hasErrors()) {
 			return "add-todo";
 		}
-		String user = (String) model.get("user");
+		String user = getLoggedInUser(model);
 		todoService.addTodo(user, todo.getDescription(), todo.getTargetDate(), false);
 		return "redirect:list-todos";
 	}
@@ -59,7 +62,7 @@ public class TodoController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "update-todo")
 	public String updateTodo(@RequestParam int id, ModelMap model) {
-		String user = (String) model.get("user");
+		String user = getLoggedInUser(model);
 		Todo todo = todoService.findTodoById(id);
 		model.addAttribute("todo", todo);
 		return "add-todo";
@@ -72,6 +75,11 @@ public class TodoController {
 		}
 		todoService.updateTodo(todo);
 		return "redirect:list-todos";
+	}
+	
+	private String getLoggedInUser(ModelMap model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
 	}
 	
 }

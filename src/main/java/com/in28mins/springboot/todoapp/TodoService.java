@@ -16,9 +16,9 @@ public class TodoService {
 		todos = new ArrayList<>();
 		Todo todo = new Todo(++count, "Learn AWS Certified", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
-		todo = new Todo(++count, "Learn GWT", "Rakesh", LocalDate.now().plusDays(1), false);
+		todo = new Todo(++count, "Learn GWT in Detail", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
-		todo = new Todo(++count, "Learn Angular", "Rakesh", LocalDate.now().plusDays(1), false);
+		todo = new Todo(++count, "Learn Angular", "Ramita", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
 		todo = new Todo(++count, "Learn React", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
@@ -26,12 +26,15 @@ public class TodoService {
 		todos.add(todo);
 		todo = new Todo(++count, "Learn Google Cloud", "Rakesh", LocalDate.now().plusDays(1), false);
 		todos.add(todo);
+		todo = new Todo(++count, "Learn Google Security", "Rishaan", LocalDate.now().plusDays(1), false);
+		todos.add(todo);
 	}
 	
 	
 	
-	public List<Todo> getAllTodos() {
-		return this.todos;
+	public List<Todo> getAllTodos(String username) {
+		Predicate<? super Todo> predicate = t -> t.getUsername().equalsIgnoreCase(username);
+		return this.todos.stream().filter(predicate).toList();
 	}
 	
 	public void addTodo(String name, String description, LocalDate date, boolean done) {
