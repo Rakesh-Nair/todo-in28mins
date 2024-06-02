@@ -22,9 +22,9 @@ public class SpringSecurityConfiguration {
 	@Bean
 	public InMemoryUserDetailsManager createUserDetailsManager() {
 		
-		UserDetails userDetails = createNewUser("rakesh123", "rakesh");
-		UserDetails userDetails1 = createNewUser("rakesh123", "rishaan");
-		UserDetails userDetails2 = createNewUser("rakesh123", "ramita");
+		UserDetails userDetails = createNewUser("rakesh123", "Rakesh");
+		UserDetails userDetails1 = createNewUser("rakesh123", "Rishaan");
+		UserDetails userDetails2 = createNewUser("rakesh123", "Ramita");
 		
 		return new InMemoryUserDetailsManager(userDetails, userDetails1, userDetails2);
 	}

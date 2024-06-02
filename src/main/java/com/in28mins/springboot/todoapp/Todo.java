@@ -3,6 +3,7 @@ package com.in28mins.springboot.todoapp;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
@@ -10,6 +11,7 @@ import jakarta.validation.constraints.Size;
 public class Todo {
 	
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	@Size(min = 10, message = "Enter atleast 10 Characters")
@@ -18,6 +20,10 @@ public class Todo {
 	private LocalDate targetDate;
 	private boolean done;
 	
+	public Todo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
